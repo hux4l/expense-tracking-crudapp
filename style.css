@@ -1,0 +1,75 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62, 5%;
+}
+
+.container {
+  width: 20rem;
+  margin: 0 auto;
+  margin-top: 10rem;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+input,
+select {
+  padding: 0.5rem;
+  border: 1px solid #4d5cdd;
+}
+
+.required-message {
+  color: lightcoral;
+  font-size: 1rem;
+}
+
+.label-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.list-expense {
+  font-family: sans-serif;
+  font-weight: 500;
+  color: white;
+  margin: 0.2rem 0;
+}
+
+.btn-add {
+  font-family: sans-serif;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: 1rem;
+  border: none;
+  color: #333;
+  background: linear-gradient(rgb(89, 99, 236), rgb(150, 218, 235));
+}
+
+.outcome {
+  background: red;
+}
+
+.income {
+  background: green;
+}
