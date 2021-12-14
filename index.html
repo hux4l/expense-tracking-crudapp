@@ -20,16 +20,19 @@
           ><span class="required-message"></span>
         </div>
         <select name="category" class="category" id="category" required>
-          <option value="jedlo">jedlo</option>
-          <option value="oblečenie">oblečenie</option>
-          <option value="domácnosť">domácnosť</option>
+          <option value="1">jedlo</option>
+          <option value="2">oblečenie</option>
+          <option value="3">domácnosť</option>
         </select>
         <div class="label-container">
           <label for="date">Dátum : </label
           ><span class="required-message"></span>
         </div>
         <input type="date" name="date" id="date" required />
-        <button class="btn-add" id="add">Add</button>
+        <div class="buttons">
+          <button class="btn-add" id="add">Add</button>
+          <button class="btn-get-all" id="fetch">Fetch</button>
+        </div>
       </form>
       <div><ul class="list"></ul></div>
     </div>

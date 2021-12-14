@@ -56,6 +56,10 @@ select {
   margin: 0.2rem 0;
 }
 
+.buttons {
+  display: flex;
+}
+
 .btn-add {
   font-family: sans-serif;
   font-weight: 600;
@@ -64,6 +68,16 @@ select {
   border: none;
   color: #333;
   background: linear-gradient(rgb(89, 99, 236), rgb(150, 218, 235));
+}
+
+.btn-get-all {
+  font-family: sans-serif;
+  font-weight: 600;
+  padding: 0.5rem;
+  margin: 1rem;
+  border: none;
+  color: #111;
+  background: linear-gradient(rgb(130, 240, 136), rgb(5, 70, 25));
 }
 
 .outcome {
