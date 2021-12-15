@@ -13,10 +13,6 @@ const expenses = [];
 let expense = {};
 
 // just test to create category
-const newCategory = document.createElement("option");
-newCategory.setAttribute("value", 4);
-newCategory.innerText = "koníčky";
-category.appendChild(newCategory);
 
 // validate form
 function validateInput(value, category, date) {
@@ -108,16 +104,6 @@ function createExpense(expense) {
 
 // create element
 function createExpenseElement(expense) {
-  // creates new li element, sets classes, based on value green or red
-  /*
-  const newExpense = document.createElement("li");
-  newExpense.classList.add(`list-expense`, `${outOrInc(expense.value)}`);
-  newExpense.innerText = `${expense.id} - ${expense.category_name} : ${
-    expense.value
-  } (${new Date(Date.parse(expense.date)).toLocaleDateString()})`;
-  // appends li to list on webpage
-  expenseList.appendChild(newExpense);
-*/
   return `
   <tr class="${outOrInc(expense.value)}">
     <td>${expense.id} </td>
@@ -142,3 +128,42 @@ btnFetch.addEventListener("click", (e) => {
     }
   });
 });
+
+// categories
+let categories = [];
+
+// create object for each category
+function createCategoryEl(category) {
+  return {
+    id: category.id,
+    text: category.text,
+  };
+}
+
+// get all categories from SQL
+async function getCategory() {
+  const category = fetch("http://localhost/10/api/category/read.php");
+
+  // get categories from API
+  await category
+    .then((response) => response.json())
+    .then((data) => {
+      for (let ent of data.data) {
+        let e = createCategoryEl(ent);
+        categories.push(e);
+      }
+      fillCategories(categories);
+    });
+}
+
+// fill categories select element
+async function fillCategories(categories) {
+  for (let cat of categories) {
+    const el = document.createElement("option");
+    el.value = +cat.id;
+    el.text = cat.text;
+    category.appendChild(el);
+  }
+}
+
+getCategory();
