@@ -59,26 +59,44 @@ select {
 
 .buttons {
   display: flex;
+  justify-content: space-between;
 }
 
-.btn-add {
+.btn {
   font-family: sans-serif;
   font-weight: 600;
   padding: 0.5rem;
   margin: 1rem;
   border: none;
   color: #333;
+  cursor: pointer;
+}
+
+.btn-add {
   background: linear-gradient(rgb(89, 99, 236), rgb(150, 218, 235));
+}
+
+.btn-update {
+  background: rgba(36, 195, 57, 0.493);
+}
+
+.btn-delete {
+  background: rgba(218, 60, 21, 0.596);
 }
 
 .btn-get-all {
   font-family: sans-serif;
   font-weight: 600;
-  padding: 0.5rem;
+  padding: 0.5rem 5rem;
   margin: 1rem;
   border: none;
   color: #111;
   background: linear-gradient(rgb(130, 240, 136), rgb(5, 70, 25));
+  cursor: pointer;
+}
+
+.fetch {
+  text-align: center;
 }
 
 .outcome {
@@ -87,6 +105,10 @@ select {
 
 .income {
   background: rgba(0, 128, 0, 0.171);
+}
+
+.message {
+  text-align: center;
 }
 
 table {
