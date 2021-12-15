@@ -31,10 +31,26 @@
         <input type="date" name="date" id="date" required />
         <div class="buttons">
           <button class="btn-add" id="add">Add</button>
-          <button class="btn-get-all" id="fetch">Fetch</button>
         </div>
       </form>
+      <button class="btn-get-all" id="fetch">Fetch</button>
       <div><ul class="list"></ul></div>
+      <div class="table-expenses">
+        <table>
+          <caption>
+            Expenses
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">category</th>
+              <th scope="col">date</th>
+              <th scope="col" class="expense-value">value</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
     <script src="./script.js"></script>
   </body>

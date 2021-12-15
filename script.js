@@ -8,6 +8,7 @@ const btnAdd = document.querySelector("#add");
 const btnFetch = document.querySelector("#fetch");
 const warnings = document.querySelectorAll(".required-message");
 const expenseList = document.querySelector(".list");
+const table = document.querySelector("tbody");
 const expenses = [];
 let expense = {};
 
@@ -54,8 +55,8 @@ btnAdd.addEventListener("click", (e) => {
 
     // sends data and store returning promise
     const data = sendData(expense);
-
-    // gets returned message
+    console.log(data);
+    //    gets returned message dont work with no cors
     data
       .then((response) => response.json())
       .then((message) => console.log(message.message));
@@ -94,20 +95,50 @@ const outOrInc = (value) => {
   return +value > 0 ? "income" : "outcome";
 };
 
+// return object expense
+function createExpense(expense) {
+  return {
+    id: expense.id,
+    date: expense.date,
+    value: expense.value,
+    category_id: expense.category_id,
+    category_name: expense.category_name,
+  };
+}
+
+// create element
+function createExpenseElement(expense) {
+  // creates new li element, sets classes, based on value green or red
+  /*
+  const newExpense = document.createElement("li");
+  newExpense.classList.add(`list-expense`, `${outOrInc(expense.value)}`);
+  newExpense.innerText = `${expense.id} - ${expense.category_name} : ${
+    expense.value
+  } (${new Date(Date.parse(expense.date)).toLocaleDateString()})`;
+  // appends li to list on webpage
+  expenseList.appendChild(newExpense);
+*/
+  return `
+  <tr class="${outOrInc(expense.value)}">
+    <td>${expense.id} </td>
+    <td>${expense.category_name}</td>
+    <td>${new Date(Date.parse(expense.date)).toLocaleDateString()}</td>
+    <td class="expense-value">${expense.value}</td>
+  </tr>
+`;
+}
+
 // listener for button to fetch data
 btnFetch.addEventListener("click", (e) => {
   e.preventDefault();
   // call getting data and render to page
   getData().then((response) => {
     for (let expense of response.data) {
-      // creates new li element, sets classes, based on value green or red
-      const newExpense = document.createElement("li");
-      newExpense.classList.add(`list-expense`, `${outOrInc(expense.value)}`);
-      newExpense.innerText = `${expense.id} - ${expense.category_name} : ${
-        expense.value
-      } (${new Date(Date.parse(expense.date)).toLocaleDateString()})`;
-      // appends li to list on webpage
-      expenseList.appendChild(newExpense);
+      // push to array
+      expenses.push(createExpense(expense));
+      // display expenses
+      const html = createExpenseElement(expense);
+      table.insertAdjacentHTML("beforeend", html);
     }
   });
 });
